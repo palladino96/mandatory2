@@ -19,7 +19,6 @@ BC = tuple[float | sp.Expr, float | sp.Expr]
 BasisCallable = Callable[[np.ndarray], np.ndarray]
 Matrix = np.ndarray | sparse.spmatrix
 
-
 @overload
 def map_reference_domain(x: np.ndarray, d: Domain, r: Domain) -> np.ndarray: ...
 @overload
@@ -27,7 +26,6 @@ def map_reference_domain(x: sp.Expr, d: Domain, r: Domain) -> sp.Expr: ...
 def map_reference_domain(x, d, r):
     """Map point(s) x from the true domain d to the reference domain r."""
     return r[0] + (r[1] - r[0]) * (x - d[0]) / (d[1] - d[0])
-
 
 @overload
 def map_true_domain(x: np.ndarray, d: Domain, r: Domain) -> np.ndarray: ...
